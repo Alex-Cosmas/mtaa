@@ -1,0 +1,14 @@
+
+
+<p class="text-bold mb-2 uppercase font-semibold">
+<%= @category.name %>
+</p>
+
+
+<ul>
+    <% @category.subcategories.each do |subcategory| %>
+        <li class="leading-relaxed ">
+            <%= link_to subcategory.name , category_path(subcategory) %>
+        </li>
+    <%end%>
+</ul>

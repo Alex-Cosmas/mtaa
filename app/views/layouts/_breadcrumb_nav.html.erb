@@ -1,0 +1,52 @@
+<div class="inner bg-indigo-100">
+
+
+    <div class="container mx-auto py-3">
+     <div class="flex flex-row justify-between">
+        
+                <p class="title text-2xl py-3 font-semibold">
+                  <%= link_to "Mtaa", root_path %>
+                  
+                </p>
+        
+        <div class="flex w-2/5 justify-end">
+             <%= link_to "Home", root_path %> 
+            <% if account_signed_in? %>
+                <%= link_to "Sign Out", destroy_account_session_path, method: :delete, class: "mx-5"%>
+            <% else %>
+                <%= link_to "My Account", root_path, class: "mx-5"%>
+            <% end %> 
+        </div>
+
+     </div>
+    </div>
+
+    <div class="container mx-auto">
+    <% if @post.present? 
+         category = @post.category
+         parent = category.parent if category.present?
+        %>
+
+        <% if parent.present? %>
+         <%= link_to parent.name, category_path(parent) %> 
+        <% end %>
+
+            
+            <%= @post.title %>
+
+        <% elsif @category.present? 
+            parent = @category.parent
+        %>
+
+        <% if parent.present? %>
+            <%= link_to parent.name, category_path(parent) %> 
+        <% end %>
+
+          <%= @category.name %>
+    
+         <% end %>
+    </div>
+
+
+</div>
+

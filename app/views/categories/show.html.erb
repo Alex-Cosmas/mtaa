@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<% @posts.each do |post| %>
+    <div class="category-post">
+        <div class="flex flex-col">
+        <span>
+            <%= link_to post.title, post_path(post) %>
+        </span>
+
+        <span class="date bg-gray-100 text-gray-900 px-2 rounded-sm">
+            <%= time_ago_in_words post.created_at %> ago
+        </span>
+        </div>
+
+        
+    </div>
+
+<% end %>
+
+
+<% if @posts.empty? %>
+    <p>There are no posts to display</p> 
+<% end %>
+
+
+

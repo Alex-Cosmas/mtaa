@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mtaa</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="font-sans text-xl text-white leading-normal">
+
+
+  <div class="bg-gray-900 min-h-screen ">
+    <div class="header bg-primary text-gray-100 text-xl">
+      
+       <%= render "layouts/breadcrumb_nav" %> 
+
+       <div class="container text-center px-4">
+        <p class="notice text-xl"><%= notice %></p>
+        </div>
+      
+    </div>
+
+    <div class="container mx-auto px-12 py-10">
+      
+       <div class="flex justify-between">
+              <div class="w-1/4 flex flex-col px-4 ">
+
+              
+
+                 <div class="-mx-4">
+                   <%= link_to "+ Create a new Post", new_post_path, class: "bg-gray-900 rounded-md py-2 " if controller.controller_name == "public"%>
+                 </div>
+
+               <div class=" -px-4 py-4 flex flex-col">
+                
+
+                <%= link_to "My Account", new_account_session_path unless account_signed_in? %>
+
+                <%= render "categories/category_sidebar" if controller.controller_name == "categories" %>
+
+               
+
+                  <p class="flex flex-col my-24 space-y-2">
+                  <%= link_to "help, faqs, abuse, legal", faqs_path %>
+                  <%= link_to "avoid scams and fraud", scams_path %>
+                  <%= link_to "personal safety tips", safety_path %>
+                  <%= link_to "terms of use", terms_path %>
+                  </p>
+               
+                
+                
+
+                
+
+
+               </div>
+
+                  
+               </div>
+              <div class=" w-3/4">
+                <%= yield %>
+              </div>
+       </div>
+    </div>
+  </div>
+</body>
+</html>

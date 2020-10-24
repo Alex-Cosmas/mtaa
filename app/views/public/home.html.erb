@@ -1,0 +1,13 @@
+
+<% @categories.each do |category| %>
+       <div class="category-box w-1/3 float-left">
+              <h1 class="text-2xl py-3 uppercase font-bold">
+                     <%= link_to category.name, category_path(category)%>
+              </h1>
+              <% category.subcategories.limit(10).each do |subcategory| %>
+                     <div class="subcategory">
+                            <%= link_to subcategory.name, category_path(subcategory) %>
+                     </div>
+              <% end %>
+       </div>
+<% end %>
